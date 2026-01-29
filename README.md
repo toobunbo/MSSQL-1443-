@@ -53,5 +53,20 @@ EXEC master..xp_cmdshell 'sc query spooler';
 # Run là lụm CVE-2021-34527
 ```
 
+## Check AV
+
+```
+EXEC master..xp_cmdshell 'sc query WinDefend';
+```
+```
+EXEC master..xp_cmdshell 'wmic /namespace:\\root\SecurityCenter2 path AntiVirusProduct get displayName,productState';
+```
+```
+EXEC master..xp_cmdshell 'tasklist /FI "IMAGENAME eq MsMpEng.exe"';
+```
+```
+EXEC master..xp_cmdshell 'powershell "Get-MpComputerStatus | Select-Object -Property AntivirusEnabled,RealTimeProtectionEnabled,IoavProtectionEnabled"';
+```
+
 
 
